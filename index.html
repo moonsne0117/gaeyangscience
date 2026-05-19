@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>중력에 의한 위치 에너지 가상실험</title>
+  <title>선혜T와 함께 하는 중력에 의한 위치 에너지의 크기 실험</title>
   <style>
     :root {
-      --bg: #f4f8fb;
+      --bg: #eef8e9;
       --panel: #ffffff;
-      --primary: #5aa7d8;
-      --primary-dark: #2f7fae;
-      --secondary: #e8f4fb;
-      --accent: #f0a64b;
-      --accent-dark: #d78425;
+      --primary: #78b86b;
+      --primary-dark: #3f7f36;
+      --accent: #f2a64b;
+      --accent-dark: #9a5b1f;
       --ink: #243447;
       --muted: #6b7c8f;
-      --line: #d7e6ef;
-      --sand: #e9cf97;
+      --line: #d7ead0;
+      --sand: #ddc279;
+      --sand-dark: #c7a954;
       --metal: #8fa7b5;
       --shadow: rgba(36, 52, 71, 0.12);
     }
@@ -26,7 +26,7 @@
     body {
       margin: 0;
       font-family: "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-      background: linear-gradient(180deg, #edf7fd 0%, var(--bg) 48%, #fff 100%);
+      background: linear-gradient(180deg, #e8f6df 0%, #f7fff2 100%);
       color: var(--ink);
     }
 
@@ -37,20 +37,23 @@
       box-shadow: 0 4px 16px var(--shadow);
     }
 
-    .title-wrap { max-width: 1420px; margin: 0 auto; }
+    .title-wrap {
+      max-width: 1420px;
+      margin: 0 auto;
+    }
 
     h1 {
       margin: 0 0 8px;
       font-size: clamp(22px, 3vw, 34px);
       letter-spacing: -0.04em;
-      color: #1d5f87;
+      color: var(--primary-dark);
     }
 
     .subtitle {
       margin: 0;
       color: var(--muted);
       font-size: 15px;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     main {
@@ -58,13 +61,9 @@
       margin: 0 auto;
       padding: 18px;
       display: grid;
-      grid-template-columns: minmax(560px, 1.05fr) minmax(480px, 0.95fr);
+      grid-template-columns: minmax(620px, 1.05fr) minmax(460px, 0.95fr);
       gap: 18px;
       align-items: start;
-    }
-
-    html {
-      -webkit-text-size-adjust: 100%;
     }
 
     .card {
@@ -80,15 +79,15 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      padding: 16px 18px;
-      background: var(--secondary);
+      padding: 15px 18px;
+      background: #edf8e7;
       border-bottom: 1px solid var(--line);
     }
 
     .card-header h2 {
       margin: 0;
       font-size: 18px;
-      color: #245b78;
+      color: var(--primary-dark);
       letter-spacing: -0.03em;
     }
 
@@ -99,42 +98,78 @@
       border-radius: 999px;
       background: #fff;
       color: var(--primary-dark);
-      border: 1px solid #cce5f3;
+      border: 1px solid #cfe7c6;
       font-size: 13px;
       font-weight: 800;
       white-space: nowrap;
     }
 
-    /* ==================== 왼쪽 실험 장치 ==================== */
     .experiment-area {
       position: relative;
-      height: 690px;
+      height: 680px;
       padding: 18px;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,.35)),
-        repeating-linear-gradient(0deg, transparent 0 34px, rgba(90,167,216,.06) 34px 35px),
-        #f8fcff;
+      background: #f6fff2;
     }
 
     .scene {
       position: relative;
       width: 100%;
-      height: 100%;
-      border: 2px solid #cfe7f5;
+      height: 640px;
+      min-width: 600px;
+      border: 2px solid #cfe7c6;
       border-radius: 20px;
-      background: linear-gradient(180deg, #f8fdff 0%, #fff 66%, #f2e2bc 66%, #e7c984 100%);
+      background: #ffffff;
       overflow: hidden;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* 지면선: 높이 눈금자 0 cm와 말뚝 이동 거리 0 cm의 공통 기준 */
+    .ground-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 430px;
+      height: 4px;
+      background: var(--sand-dark);
+      z-index: 42;
+    }
+
+    .sand {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 430px;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 18% 30%, rgba(126, 82, 36, .18) 0 4px, transparent 5px),
+        radial-gradient(circle at 74% 52%, rgba(126, 82, 36, .15) 0 5px, transparent 6px),
+        linear-gradient(180deg, #f0dca8 0%, var(--sand) 100%);
+      z-index: 30;
+      pointer-events: none;
+    }
+
+    .sand::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 46px;
+      background: linear-gradient(180deg, rgba(255, 247, 222, .76), rgba(240, 220, 168, .15));
     }
 
     .stand-label {
       position: absolute;
-      left: 172px;
-      top: 24px;
+      left: 185px;
+      top: 22px;
       z-index: 10;
       padding: 6px 10px;
       border-radius: 999px;
       background: #fff;
-      border: 1px solid #cfe7f5;
+      border: 1px solid #cfe7c6;
       color: var(--muted);
       font-size: 13px;
       font-weight: 800;
@@ -142,28 +177,28 @@
 
     .crane-frame {
       position: absolute;
-      left: 160px;
-      top: 56px;
+      left: 170px;
+      top: 54px;
       width: 210px;
-      height: 468px;
+      height: 376px;
       border-left: 13px solid var(--metal);
       border-right: 13px solid var(--metal);
       border-top: 15px solid var(--metal);
       border-radius: 10px 10px 0 0;
-      z-index: 2;
+      z-index: 3;
     }
 
     .crossbar {
       position: absolute;
       left: 168px;
-      top: 118px;
+      top: 116px;
       width: 194px;
       height: 9px;
       background: repeating-linear-gradient(45deg, #7e98a7 0 10px, #a9bdc8 10px 20px);
       border-radius: 10px;
       transform: rotate(-7deg);
       transform-origin: left center;
-      z-index: 3;
+      z-index: 4;
     }
 
     .drop-line {
@@ -171,18 +206,18 @@
       left: 258px;
       top: 74px;
       width: 3px;
-      height: 456px;
+      height: 345px;
       background: repeating-linear-gradient(180deg, rgba(61,91,110,.35) 0 8px, transparent 8px 16px);
       border-radius: 999px;
-      z-index: 3;
+      z-index: 4;
     }
 
     .weight {
       position: absolute;
-      left: 221px;
-      top: 80px;
-      width: 76px;
-      height: 76px;
+      left: 228px;
+      top: 334px;
+      width: 62px;
+      height: 62px;
       border-radius: 16px 16px 22px 22px;
       background: linear-gradient(180deg, #ffcf88, #f19b42);
       border: 4px solid #ce7828;
@@ -192,36 +227,39 @@
       align-items: center;
       color: #65350e;
       font-weight: 900;
-      font-size: 14px;
-      transition: top .08s linear, transform .18s ease;
-      z-index: 8;
+      font-size: 12px;
+      z-index: 24;
+      transition: top .25s ease, transform .18s ease;
     }
 
     .weight::before {
       content: "";
       position: absolute;
-      top: -17px;
-      width: 28px;
-      height: 17px;
-      border: 5px solid #ce7828;
+      top: -14px;
+      width: 23px;
+      height: 14px;
+      border: 4px solid #ce7828;
       border-bottom: none;
       border-radius: 12px 12px 0 0;
       background: #ffd9a3;
     }
 
-    .weight.hit { transform: scale(1.07, .92); }
+    .weight.hit {
+      transform: scale(1.08, .88);
+    }
 
-    /* 높이 눈금자는 왼쪽, 장치와 충분히 분리 */
+    /* 실험 2에서만 표시: 높이 눈금자 0 cm = 지면선 */
     .height-ruler {
       position: absolute;
       left: 28px;
-      top: 58px;
-      width: 92px;
-      height: 420px;
+      top: 260px;
+      width: 100px;
+      height: 170px;
       border-left: 4px solid var(--primary-dark);
-      background: rgba(255,255,255,.82);
-      border-radius: 14px;
-      z-index: 5;
+      background: #ffffff;
+      border-radius: 14px 14px 0 0;
+      z-index: 45;
+      overflow: visible;
     }
 
     .height-ruler .tick {
@@ -232,80 +270,98 @@
       background: var(--primary-dark);
     }
 
-    .height-ruler .tick.major { width: 38px; height: 3px; }
+    .height-ruler .tick.major {
+      width: 40px;
+      height: 3px;
+    }
 
     .height-ruler .label {
       position: absolute;
-      left: 46px;
+      left: 48px;
       transform: translateY(-50%);
-      color: #245b78;
+      color: var(--primary-dark);
       font-size: 11px;
       font-weight: 900;
       white-space: nowrap;
-      background: rgba(255,255,255,.9);
+      background: #fff;
       padding: 1px 3px;
     }
 
-    .ruler-title {
+    .height-title {
       position: absolute;
-      left: 25px;
-      top: 488px;
-      width: 96px;
+      left: 24px;
+      top: 444px;
+      width: 116px;
       text-align: center;
       font-size: 13px;
       font-weight: 900;
-      color: #245b78;
+      color: var(--primary-dark);
       background: #fff;
-      border: 1px solid #cfe7f5;
+      border: 1px solid #cfe7c6;
       border-radius: 999px;
       padding: 6px 8px;
-      z-index: 8;
+      z-index: 46;
     }
 
-    /* 말뚝은 작게, 중앙 장치 안에 배치 */
+    /* 말뚝: 지면에서 시작하여 아래로 박힘 */
     .pile-wrap {
       position: absolute;
-      left: 226px;
-      bottom: 102px;
-      width: 64px;
-      height: 158px;
-      z-index: 7;
-      transition: transform .55s cubic-bezier(.15,.75,.2,1.1);
+      left: 230px;
+      top: 430px;
+      width: 58px;
+      height: 125px;
+      z-index: 36;
+      transform: translateY(0px);
+      transition: transform .82s cubic-bezier(.13,.86,.18,1.05);
     }
 
     .pile {
       position: absolute;
-      left: 12px;
+      left: 10px;
       top: 0;
-      width: 40px;
-      height: 158px;
+      width: 38px;
+      height: 125px;
       background: linear-gradient(90deg, #805030, #c58c56 50%, #704323);
       border: 3px solid #6e4127;
       border-radius: 10px 10px 7px 7px;
+      box-shadow: inset -5px 0 rgba(0, 0, 0, .12);
     }
 
     .pile-top {
       position: absolute;
-      left: 5px;
+      left: 2px;
       top: -16px;
       width: 54px;
       height: 22px;
       border-radius: 8px;
       background: linear-gradient(180deg, #a8c0ce, #7894a3);
       border: 3px solid #5f7b8a;
+      z-index: 2;
     }
 
-    /* 말뚝 이동 거리 눈금자는 오른쪽 끝, 장치/높이 눈금과 분리 */
+    .pile-wrap.driving {
+      animation: pileImpact .38s ease-out;
+    }
+
+    @keyframes pileImpact {
+      0% { filter: brightness(1); }
+      20% { filter: brightness(1.22); }
+      45% { filter: brightness(.94); }
+      100% { filter: brightness(1); }
+    }
+
+    /* 말뚝 이동 거리 눈금자: 0 cm = 지면선, 높이 눈금자와 10 cm 간격 동일 */
     .pile-ruler {
       position: absolute;
-      right: 28px;
-      bottom: 104px;
-      width: 102px;
-      height: 260px;
+      left: 305px;
+      top: 430px;
+      width: 98px;
+      height: 170px;
       border-left: 4px solid var(--accent-dark);
-      background: rgba(255,255,255,.88);
-      border-radius: 14px;
-      z-index: 5;
+      background: #fff;
+      border-radius: 0 0 14px 14px;
+      z-index: 50;
+      overflow: visible;
     }
 
     .pile-ruler .tick {
@@ -316,56 +372,87 @@
       background: var(--accent-dark);
     }
 
-    .pile-ruler .tick.major { width: 34px; height: 3px; }
+    .pile-ruler .tick.major {
+      width: 34px;
+      height: 3px;
+    }
 
     .pile-ruler .label {
       position: absolute;
-      left: 42px;
+      left: 40px;
       transform: translateY(-50%);
-      color: #7a4716;
+      color: var(--accent-dark);
       font-size: 11px;
       font-weight: 900;
       white-space: nowrap;
-      background: rgba(255,255,255,.92);
+      background: #fff;
       padding: 1px 3px;
     }
 
-    .distance-callout {
-      display: none;
+    .pile-title {
+      position: absolute;
+      left: 300px;
+      top: 610px;
+      width: 112px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--accent-dark);
+      background: #fff;
+      border: 1px solid #e4c396;
+      border-radius: 999px;
+      padding: 6px 8px;
+      z-index: 50;
     }
 
-    .sand {
+    .depth-marker {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 132px;
-      background:
-        radial-gradient(circle at 20% 35%, rgba(155,107,56,.18) 0 4px, transparent 5px),
-        radial-gradient(circle at 70% 52%, rgba(155,107,56,.16) 0 5px, transparent 6px),
-        linear-gradient(180deg, #efd9a4, var(--sand));
-      border-top: 4px solid #d4b774;
-      z-index: 2;
+      left: 296px;
+      top: 430px;
+      width: 116px;
+      height: 0;
+      border-top: 3px solid #e44f38;
+      z-index: 55;
+      opacity: 0;
+      transition: top .82s cubic-bezier(.13,.86,.18,1.05), opacity .2s ease;
+    }
+
+    .depth-marker::after {
+      content: attr(data-depth);
+      position: absolute;
+      right: -6px;
+      top: -23px;
+      transform: translateX(100%);
+      background: #fff3f0;
+      color: #c83c2d;
+      border: 1px solid #f2b5ab;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
     }
 
     .impact-burst {
       position: absolute;
-      left: 195px;
-      bottom: 270px;
-      width: 126px;
-      height: 80px;
+      left: 202px;
+      top: 382px;
+      width: 140px;
+      height: 90px;
       pointer-events: none;
       opacity: 0;
-      z-index: 10;
+      z-index: 60;
     }
 
-    .impact-burst.show { animation: burst .55s ease-out; }
+    .impact-burst.show {
+      animation: burst .58s ease-out;
+    }
 
     .impact-burst span {
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 54px;
+      width: 58px;
       height: 5px;
       background: #ffce65;
       border-radius: 999px;
@@ -380,13 +467,20 @@
 
     @keyframes burst {
       0% { opacity: 0; transform: scale(.5); }
-      35% { opacity: 1; transform: scale(1.1); }
-      100% { opacity: 0; transform: scale(1.55); }
+      35% { opacity: 1; transform: scale(1.16); }
+      100% { opacity: 0; transform: scale(1.75); }
     }
 
-    /* ==================== 오른쪽 영역 ==================== */
-    .right-column { display: flex; flex-direction: column; gap: 18px; }
-    .controls, .result-body { padding: 16px; }
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .controls,
+    .result-body {
+      padding: 16px;
+    }
 
     .tabs {
       display: grid;
@@ -395,7 +489,8 @@
       margin-bottom: 14px;
     }
 
-    button, .tab-btn {
+    button,
+    .tab-btn {
       appearance: none;
       border: none;
       cursor: pointer;
@@ -407,15 +502,15 @@
     .tab-btn {
       padding: 13px 10px;
       border-radius: 15px;
-      background: #edf5fa;
+      background: #edf7e8;
       color: #47728a;
-      border: 1px solid #d3e7f2;
+      border: 1px solid #d5e9cc;
     }
 
     .tab-btn.active {
       background: var(--primary);
       color: #fff;
-      box-shadow: 0 8px 18px rgba(90,167,216,.28);
+      box-shadow: 0 8px 18px rgba(127,191,106,.28);
     }
 
     .mode-info {
@@ -439,7 +534,7 @@
     label {
       display: block;
       margin-bottom: 7px;
-      color: #245b78;
+      color: var(--primary-dark);
       font-size: 13px;
       font-weight: 900;
     }
@@ -455,7 +550,10 @@
       outline: none;
     }
 
-    select:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(90,167,216,.18); }
+    select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(127,191,106,.18);
+    }
 
     .btn-row {
       display: grid;
@@ -463,14 +561,31 @@
       gap: 10px;
     }
 
-    .main-btn, .sub-btn, .danger-btn {
+    .main-btn,
+    .sub-btn,
+    .danger-btn {
       padding: 13px 12px;
       border-radius: 15px;
     }
 
-    .main-btn { background: var(--primary); color: #fff; box-shadow: 0 8px 18px rgba(90,167,216,.26); }
-    .sub-btn { background: #eef7ee; color: #327755; border: 1px solid #cbe8d7; }
-    .danger-btn { background: #fff0f0; color: #b64242; border: 1px solid #f4cbcb; }
+    .main-btn {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(127,191,106,.26);
+    }
+
+    .sub-btn {
+      background: #eef7ee;
+      color: #327755;
+      border: 1px solid #cbe8d7;
+    }
+
+    .danger-btn {
+      background: #fff0f0;
+      color: #b64242;
+      border: 1px solid #f4cbcb;
+    }
+
     button:hover { transform: translateY(-1px); }
     button:disabled { opacity: .55; cursor: not-allowed; transform: none; }
 
@@ -504,7 +619,10 @@
       font-weight: 900;
     }
 
-    .stat strong { color: #245b78; font-size: 20px; }
+    .stat strong {
+      color: var(--primary-dark);
+      font-size: 20px;
+    }
 
     .table-wrap {
       overflow-x: auto;
@@ -513,9 +631,28 @@
       margin-bottom: 16px;
     }
 
-    table { width: 100%; min-width: 560px; border-collapse: collapse; background: #fff; }
-    th, td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #edf3f7; font-size: 13px; }
-    th { background: #f1f8fc; color: #245b78; font-weight: 900; white-space: nowrap; }
+    table {
+      width: 100%;
+      min-width: 560px;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    th,
+    td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #edf3f7;
+      font-size: 13px;
+    }
+
+    th {
+      background: #f1f8fc;
+      color: var(--primary-dark);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
     tr:last-child td { border-bottom: none; }
 
     .graph-section {
@@ -537,21 +674,24 @@
 
     .graph-title {
       margin: 0 0 8px;
-      color: #245b78;
+      color: var(--primary-dark);
       font-size: 15px;
       font-weight: 900;
       letter-spacing: -0.02em;
     }
 
-    canvas { display: block; width: 100%; height: 230px; }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 230px;
+    }
 
     @media (max-width: 1120px) {
       main { grid-template-columns: 1fr; }
-      .experiment-area { height: 670px; }
       .graph-grid { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 680px) {
       header { padding: 14px 12px 10px; }
       h1 { font-size: 22px; }
       .subtitle { font-size: 13px; line-height: 1.45; }
@@ -560,58 +700,54 @@
       .card-header { padding: 12px 14px; }
       .card-header h2 { font-size: 16px; }
       .badge { font-size: 12px; padding: 6px 9px; }
-
       .experiment-area {
-        height: 560px;
+        height: 565px;
         padding: 8px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
       }
-
       .scene {
         width: 430px;
         min-width: 430px;
         height: 540px;
         margin: 0 auto;
       }
-
+      .ground-line { top: 435px; }
+      .sand { top: 435px; }
       .height-ruler {
         left: 12px;
-        top: 48px;
-        width: 72px;
-        height: 360px;
+        top: 345px;
+        width: 76px;
+        height: 90px;
         border-left-width: 3px;
       }
       .height-ruler .tick { width: 18px; }
       .height-ruler .tick.major { width: 28px; height: 2px; }
       .height-ruler .label { left: 34px; font-size: 9px; }
-      .ruler-title { left: 8px; top: 416px; width: 82px; font-size: 10px; padding: 5px 6px; }
+      .height-title { left: 8px; top: 448px; width: 84px; font-size: 10px; padding: 5px 6px; }
       .stand-label { left: 145px; top: 18px; font-size: 11px; padding: 5px 8px; }
-      .crane-frame { left: 134px; top: 50px; width: 128px; height: 390px; border-left-width: 10px; border-right-width: 10px; border-top-width: 12px; }
+      .crane-frame { left: 134px; top: 50px; width: 128px; height: 385px; border-left-width: 10px; border-right-width: 10px; border-top-width: 12px; }
       .crossbar { left: 140px; top: 104px; width: 122px; height: 7px; }
-      .drop-line { left: 193px; top: 66px; height: 382px; }
+      .drop-line { left: 193px; top: 66px; height: 360px; }
       .weight { left: 164px; width: 58px; height: 58px; font-size: 10px; border-width: 3px; }
       .weight::before { top: -14px; width: 22px; height: 14px; border-width: 4px; border-bottom: none; }
-
-      .pile-wrap { left: 169px; bottom: 86px; width: 48px; height: 120px; }
-      .pile { left: 10px; width: 28px; height: 120px; border-width: 2px; }
-      .pile-top { left: 4px; width: 40px; height: 18px; top: -13px; border-width: 2px; }
-
+      .pile-wrap { left: 170px; top: 435px; width: 46px; height: 120px; }
+      .pile { left: 8px; width: 30px; height: 120px; border-width: 2px; }
+      .pile-top { left: 3px; width: 46px; height: 18px; top: -13px; border-width: 2px; }
       .pile-ruler {
-        right: 10px;
-        bottom: 88px;
-        width: 72px;
-        height: 220px;
+        left: 232px;
+        top: 435px;
+        width: 78px;
+        height: 90px;
         border-left-width: 3px;
       }
       .pile-ruler .tick { width: 16px; }
       .pile-ruler .tick.major { width: 26px; height: 2px; }
       .pile-ruler .label { left: 30px; font-size: 9px; }
-
-
-      .sand { height: 105px; }
-      .impact-burst { left: 140px; bottom: 220px; transform: scale(.75); }
-
+      .pile-title { left: 222px; top: 530px; width: 94px; font-size: 10px; padding: 5px 6px; }
+      .depth-marker { left: 222px; top: 435px; width: 92px; border-top-width: 2px; }
+      .depth-marker::after { font-size: 10px; top: -20px; }
+      .impact-burst { left: 140px; top: 388px; transform: scale(.75); }
       .controls, .result-body { padding: 12px; }
       .tabs { grid-template-columns: 1fr; gap: 8px; }
       .tab-btn { padding: 11px 8px; font-size: 14px; }
@@ -620,27 +756,6 @@
       .main-btn, .sub-btn, .danger-btn { padding: 12px 10px; }
       table { min-width: 520px; }
       th, td { font-size: 12px; padding: 8px 6px; }
-      .graph-grid { grid-template-columns: 1fr; }
-      .graph-title { font-size: 13px; }
-      canvas { height: 210px; }
-    }
-
-    @media (max-width: 390px) {
-      .experiment-area { height: 535px; }
-      .scene {
-        transform: scale(.92);
-        transform-origin: top center;
-        margin-bottom: -44px;
-      }
-    }
-
-    @media print {
-      body { background: #fff; }
-      main { display: block; max-width: none; padding: 0; }
-      header { box-shadow: none; }
-      .card { box-shadow: none; page-break-inside: avoid; margin-bottom: 14px; }
-      .controls, .tabs, .btn-row, .small-note { display: none !important; }
-      .experiment-area { height: 610px; }
       canvas { height: 210px; }
     }
   </style>
@@ -648,10 +763,9 @@
 <body>
   <header>
     <div class="title-wrap">
-      <h1>중력에 의한 위치 에너지의 크기</h1>
+      <h1>선혜T와 함께 하는 중력에 의한 위치 에너지의 크기 실험</h1>
       <p class="subtitle">
-        항타기 모형 가상실험 · 질량과 높이를 바꾸어 말뚝의 이동 거리를 비교해 봅시다.<br />
-        말뚝 이동 거리가 클수록 추가 가진 중력에 의한 위치 에너지가 크다고 볼 수 있습니다.
+        추의 질량과 높이가 변할 때 중력에 의한 위치 에너지는 어떻게 변하는지 관찰해보아요!
       </p>
     </div>
   </header>
@@ -660,14 +774,14 @@
     <section class="card">
       <div class="card-header">
         <h2>① 가상실험 장치</h2>
-        <span class="badge">공사장 항타기 모형</span>
+        <span class="badge">눈금 기준: 지면선</span>
       </div>
       <div class="experiment-area">
         <div class="scene">
           <div class="stand-label">수직 스탠드</div>
+
           <div class="height-ruler" id="heightRuler"></div>
-          <div class="ruler-title">높이 눈금자</div>
-          
+          <div class="height-title" id="heightTitle">높이 눈금자</div>
 
           <div class="crane-frame"></div>
           <div class="crossbar"></div>
@@ -679,13 +793,16 @@
             <div class="pile"></div>
           </div>
 
-          <div class="impact-burst" id="impactBurst"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="impact-burst" id="impactBurst">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
 
           <div class="pile-ruler" id="pileRuler"></div>
-          <div class="distance-callout"><strong id="distanceText">0.0 cm</strong></div>
+          <div class="depth-marker" id="depthMarker" data-depth="0 cm"></div>
+          <div class="pile-title">말뚝 이동 거리</div>
 
           <div class="sand"></div>
-          
+          <div class="ground-line"></div>
         </div>
       </div>
     </section>
@@ -703,7 +820,7 @@
           </div>
 
           <div class="mode-info" id="modeInfo">
-            <strong>실험 1</strong>은 높이를 10 cm로 일정하게 하고, 추의 질량을 바꾸어 말뚝의 이동 거리를 비교합니다.
+            <strong>실험 1</strong>은 높이를 20 cm로 일정하게 하고, 추의 질량을 바꾸어 말뚝의 이동 거리를 비교합니다.
           </div>
 
           <div class="form-grid">
@@ -723,9 +840,7 @@
             <button class="danger-btn" id="resetBtn" type="button">초기화</button>
           </div>
 
-          <p class="small-note">
-            같은 조건에서 3회까지 반복할 수 있습니다. 이동 거리는 질량 × 높이에 비례하도록 설계되어 있습니다.
-          </p>
+          <p class="small-note">같은 조건에서 3회까지 반복할 수 있습니다. 실험 후 말뚝 위치가 유지되어 눈금으로 결과를 확인할 수 있습니다.</p>
         </div>
       </section>
 
@@ -737,7 +852,7 @@
         <div class="result-body">
           <div class="stat-grid">
             <div class="stat"><span>현재 질량</span><strong id="statMass">0.1 kg</strong></div>
-            <div class="stat"><span>현재 높이</span><strong id="statHeight">10 cm</strong></div>
+            <div class="stat"><span>현재 높이</span><strong id="statHeight">20 cm</strong></div>
             <div class="stat"><span>현재 평균</span><strong id="statAverage">-</strong></div>
           </div>
 
@@ -753,7 +868,6 @@
               </tbody>
             </table>
           </div>
-
         </div>
       </section>
     </section>
@@ -761,7 +875,6 @@
     <section class="card graph-section">
       <div class="card-header">
         <h2>④ 실험 그래프</h2>
-        
       </div>
       <div class="result-body">
         <div class="graph-grid">
@@ -779,19 +892,25 @@
   </main>
 
   <script>
-    const K = 10;
+    const K = 5;
     const MAX_RUNS = 3;
-    const HEIGHT_RULER_PX = window.matchMedia('(max-width: 650px)').matches ? 360 : 420;
-    const HEIGHT_TOP = 58;
-    const PILE_RULER_PX = window.matchMedia('(max-width: 650px)').matches ? 220 : 260;
-    const DROP_BOTTOM_TOP = window.matchMedia('(max-width: 650px)').matches ? 362 : 430;
+    const PILE_RULER_MAX = 100;
+
+    const IS_MOBILE = () => window.matchMedia('(max-width: 680px)').matches;
+    const GROUND_Y = () => IS_MOBILE() ? 435 : 430;
+    const WEIGHT_HEIGHT = () => IS_MOBILE() ? 58 : 62;
+    const HEIGHT_RULER_PX = () => IS_MOBILE() ? 90 : 170;
+    const PILE_RULER_PX = () => IS_MOBILE() ? 90 : 170;
+    const PILE_MOVE_PX = () => PILE_RULER_PX();
+    const DROP_BOTTOM_TOP = () => GROUND_Y() - WEIGHT_HEIGHT();
 
     const state = {
       mode: 1,
       mass: 0.1,
-      height: 10,
+      height: 20,
       currentRuns: [],
-      results: []
+      results: [],
+      currentDistance: 0
     };
 
     const massSelect = document.getElementById('massSelect');
@@ -806,11 +925,11 @@
     const resultTableBody = document.getElementById('resultTableBody');
     const weight = document.getElementById('weight');
     const pileWrap = document.getElementById('pileWrap');
-
-    const distanceText = document.getElementById('distanceText');
     const impactBurst = document.getElementById('impactBurst');
     const heightRuler = document.getElementById('heightRuler');
+    const heightTitle = document.getElementById('heightTitle');
     const pileRuler = document.getElementById('pileRuler');
+    const depthMarker = document.getElementById('depthMarker');
     const statMass = document.getElementById('statMass');
     const statHeight = document.getElementById('statHeight');
     const statAverage = document.getElementById('statAverage');
@@ -826,61 +945,85 @@
         heightSelect.insertAdjacentHTML('beforeend', `<option value="${h}">${h} cm</option>`);
       }
       massSelect.value = '0.1';
-      heightSelect.value = '10';
+      heightSelect.value = '20';
     }
 
     function createRulers() {
       heightRuler.innerHTML = '';
-      for (let h = 10; h <= 100; h += 10) {
-        const y = HEIGHT_RULER_PX - (h / 100) * HEIGHT_RULER_PX;
-        heightRuler.insertAdjacentHTML('beforeend', `<div class="tick major" style="top:${y}px"></div><div class="label" style="top:${y}px">${h} cm</div>`);
+      for (let h = 0; h <= 100; h += 10) {
+        const y = HEIGHT_RULER_PX() - (h / 100) * HEIGHT_RULER_PX();
+        heightRuler.insertAdjacentHTML(
+          'beforeend',
+          `<div class="tick major" style="top:${y}px"></div><div class="label" style="top:${y}px">${h} cm</div>`
+        );
       }
 
       pileRuler.innerHTML = '';
-      for (let d = 0; d <= 100; d += 10) {
-        const y = PILE_RULER_PX - (d / 100) * PILE_RULER_PX;
+      for (let d = 0; d <= PILE_RULER_MAX; d += 10) {
+        const y = (d / PILE_RULER_MAX) * PILE_RULER_PX();
         const cls = d % 20 === 0 ? 'tick major' : 'tick';
-        pileRuler.insertAdjacentHTML('beforeend', `<div class="${cls}" style="top:${y}px"></div><div class="label" style="top:${y}px">${d} cm</div>`);
+        pileRuler.insertAdjacentHTML(
+          'beforeend',
+          `<div class="${cls}" style="top:${y}px"></div><div class="label" style="top:${y}px">${d} cm</div>`
+        );
       }
     }
 
-    function expectedDistance(mass, height) { return K * mass * height; }
-    function round1(v) { return Math.round(v * 10) / 10; }
-    function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
-    function randomBetween(min, max) { return Math.random() * (max - min) + min; }
-    function average(arr) { return arr.length ? arr.reduce((s, v) => s + v, 0) / arr.length : 0; }
+    function expectedDistance(mass, height) {
+      return K * mass * height;
+    }
+
+    function round1(v) {
+      return Math.round(v * 10) / 10;
+    }
+
+    function randomBetween(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function average(arr) {
+      return arr.length ? arr.reduce((s, v) => s + v, 0) / arr.length : 0;
+    }
 
     function generateMeasurement() {
       const ideal = expectedDistance(state.mass, state.height);
       const runIndex = state.currentRuns.length;
-      if (runIndex < 2) return clamp(round1(ideal + randomBetween(-1, 1)), 0, 100);
+      if (runIndex < 2) return round1(ideal + randomBetween(-0.6, 0.6));
       const third = ideal * 3 - state.currentRuns[0] - state.currentRuns[1];
-      return clamp(round1(third), 0, 100);
+      return round1(third);
     }
 
     function setMode(mode) {
       state.mode = mode;
       state.currentRuns = [];
+      state.currentDistance = 0;
+
       mode1Btn.classList.toggle('active', mode === 1);
       mode2Btn.classList.toggle('active', mode === 2);
 
       if (mode === 1) {
-        state.height = 10;
-        heightSelect.value = '10';
+        heightRuler.classList.add('hidden');
+        heightTitle.classList.add('hidden');
+        state.height = 20;
+        heightSelect.value = '20';
         heightSelect.disabled = true;
         massSelect.disabled = false;
-        modeInfo.innerHTML = '<strong>실험 1</strong>은 높이를 10 cm로 일정하게 하고, 추의 질량을 바꾸어 말뚝의 이동 거리를 비교합니다.';
+        modeInfo.innerHTML = '<strong>실험 1</strong>은 높이를 20 cm로 일정하게 하고, 추의 질량을 바꾸어 말뚝의 이동 거리를 비교합니다.';
       } else {
+        heightRuler.classList.remove('hidden');
+        heightTitle.classList.remove('hidden');
         state.mass = 0.1;
         massSelect.value = '0.1';
-        massSelect.disabled = true;
         heightSelect.disabled = false;
+        massSelect.disabled = true;
         modeInfo.innerHTML = '<strong>실험 2</strong>는 질량을 0.1 kg으로 일정하게 하고, 추를 떨어뜨리는 높이를 바꾸어 말뚝의 이동 거리를 비교합니다.';
       }
+
       updateSelectedValues();
       loadRunsForCurrentCondition();
+      state.currentDistance = state.currentRuns.length ? state.currentRuns[state.currentRuns.length - 1] : 0;
       updateRunBadge();
-      updateApparatus(0);
+      updateApparatus(state.currentDistance, state.currentDistance === 0);
       drawAllGraphs();
     }
 
@@ -892,14 +1035,11 @@
       statHeight.textContent = `${state.height} cm`;
       statAverage.textContent = state.currentRuns.length ? `${average(state.currentRuns).toFixed(1)} cm` : '-';
       updateWeightStartPosition();
-
     }
 
     function updateWeightStartPosition() {
-      const isMobile = window.matchMedia('(max-width: 650px)').matches;
-      const baseTop = isMobile ? 322 : 390;
-      const range = isMobile ? 245 : 310;
-      const top = baseTop - (state.height / 100) * range;
+      const heightPx = (state.height / 100) * HEIGHT_RULER_PX();
+      const top = GROUND_Y() - WEIGHT_HEIGHT() - heightPx;
       weight.style.top = `${top}px`;
     }
 
@@ -916,13 +1056,13 @@
       updateSelectedValues();
       const distance = generateMeasurement();
       await animateDrop(distance);
+      state.currentDistance = distance;
       state.currentRuns.push(distance);
       saveOrUpdateResult();
       updateTable();
       updateRunBadge();
       drawAllGraphs();
       statAverage.textContent = `${average(state.currentRuns).toFixed(1)} cm`;
-      distanceText.textContent = `${distance.toFixed(1)} cm`;
       if (state.currentRuns.length < MAX_RUNS) {
         startBtn.disabled = false;
         startBtn.textContent = '실험 시작';
@@ -932,39 +1072,48 @@
     function animateDrop(distance) {
       return new Promise(resolve => {
         updateWeightStartPosition();
-        updateApparatus(0);
+        updateApparatus(0, true);
         weight.classList.remove('hit');
         impactBurst.classList.remove('show');
+        pileWrap.classList.remove('driving');
+
         requestAnimationFrame(() => {
           setTimeout(() => {
-            weight.style.transition = 'top .75s cubic-bezier(.15,.8,.15,1)';
-            weight.style.top = `${DROP_BOTTOM_TOP}px`;
+            weight.style.transition = 'top .45s cubic-bezier(.1,.88,.12,1)';
+            weight.style.top = `${DROP_BOTTOM_TOP()}px`;
+
             setTimeout(() => {
               weight.classList.add('hit');
               impactBurst.classList.add('show');
-              updateApparatus(distance);
+              pileWrap.classList.add('driving');
+              updateApparatus(distance, false);
+
               setTimeout(() => {
+                pileWrap.classList.remove('driving');
                 weight.classList.remove('hit');
                 weight.style.transition = 'top .35s ease';
                 updateWeightStartPosition();
                 resolve();
-              }, 620);
-            }, 760);
+              }, 760);
+            }, 460);
           }, 80);
         });
       });
     }
 
-    function updateApparatus(distance) {
-      const pileMovePx = (distance / 100) * (window.matchMedia('(max-width: 650px)').matches ? 86 : 115);
+    function updateApparatus(distance, hideMarker = false) {
+      const d = Math.max(0, distance);
+      const pileMovePx = (d / PILE_RULER_MAX) * PILE_MOVE_PX();
       pileWrap.style.transform = `translateY(${pileMovePx}px)`;
-      distanceText.textContent = `${distance.toFixed(1)} cm`;
+      depthMarker.style.top = `${GROUND_Y() + pileMovePx}px`;
+      depthMarker.dataset.depth = `${d.toFixed(1)} cm`;
+      depthMarker.style.opacity = hideMarker || d === 0 ? '0' : '1';
     }
 
     function saveOrUpdateResult() {
       const existing = state.results.find(r => r.mode === state.mode && r.mass.toFixed(1) === state.mass.toFixed(1) && r.height === state.height);
-      if (existing) existing.runs = [...state.currentRuns];
-      else state.results.push({ mode: state.mode, mass: state.mass, height: state.height, runs: [...state.currentRuns] });
+      if (existing) existing.runs = [...state.currentRuns, state.currentDistance];
+      else state.results.push({ mode: state.mode, mass: state.mass, height: state.height, runs: [...state.currentRuns, state.currentDistance] });
     }
 
     function loadRunsForCurrentCondition() {
@@ -1017,7 +1166,7 @@
       const xMin = 0;
       const xMax = mode === 1 ? 1.0 : 100;
       const yMin = 0;
-      const yMax = 105;
+      const yMax = 110;
       const xs = x => pad.left + ((x - xMin) / (xMax - xMin)) * plotW;
       const ys = y => pad.top + plotH - ((y - yMin) / (yMax - yMin)) * plotH;
 
@@ -1030,7 +1179,7 @@
       ctx.textAlign = 'right';
       ctx.textBaseline = 'middle';
 
-      for (let y = 0; y <= 100; y += 20) {
+      for (let y = 0; y <= 100; y += 10) {
         const py = ys(y);
         ctx.beginPath();
         ctx.moveTo(pad.left, py);
@@ -1114,9 +1263,9 @@
     function resetAll() {
       state.currentRuns = [];
       state.results = [];
-      distanceText.textContent = '0.0 cm';
+      state.currentDistance = 0;
       statAverage.textContent = '-';
-      updateApparatus(0);
+      updateApparatus(0, true);
       updateTable();
       updateRunBadge();
       drawAllGraphs();
@@ -1128,26 +1277,29 @@
     massSelect.addEventListener('change', () => {
       updateSelectedValues();
       loadRunsForCurrentCondition();
+      state.currentDistance = state.currentRuns.length ? state.currentRuns[state.currentRuns.length - 1] : 0;
       updateRunBadge();
-      updateApparatus(0);
+      updateApparatus(state.currentDistance, state.currentDistance === 0);
       statAverage.textContent = state.currentRuns.length ? `${average(state.currentRuns).toFixed(1)} cm` : '-';
     });
 
     heightSelect.addEventListener('change', () => {
       updateSelectedValues();
       loadRunsForCurrentCondition();
+      state.currentDistance = state.currentRuns.length ? state.currentRuns[state.currentRuns.length - 1] : 0;
       updateRunBadge();
-      updateApparatus(0);
+      updateApparatus(state.currentDistance, state.currentDistance === 0);
       statAverage.textContent = state.currentRuns.length ? `${average(state.currentRuns).toFixed(1)} cm` : '-';
     });
 
     startBtn.addEventListener('click', runExperiment);
     resetBtn.addEventListener('click', resetAll);
     printBtn.addEventListener('click', () => window.print());
+
     window.addEventListener('resize', () => {
       createRulers();
       updateSelectedValues();
-      updateApparatus(0);
+      updateApparatus(state.currentDistance, state.currentDistance === 0);
       drawAllGraphs();
     });
 
