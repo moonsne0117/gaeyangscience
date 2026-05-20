@@ -252,7 +252,7 @@
     .height-ruler {
       position: absolute;
       left: 28px;
-      top: 155px;   /* 155 + 170 = 325 (말뚝 윗면 위치) */
+      top: 155px;   /* 155 + 170 = 325 */
       width: 100px;
       height: 170px;
       border-left: 4px solid var(--primary-dark);
@@ -315,7 +315,7 @@
     .pile-wrap {
       position: absolute;
       left: 234px;
-      top: 340px;   /* 340 + (-15) = 325 부근에서 말뚝 윗면 */
+      top: 340px;
       width: 50px;
       height: 90px;
       z-index: 36;
@@ -686,7 +686,7 @@
     canvas {
       display: block;
       width: 100%;
-      height: 230px;
+      height: 340px;
     }
 
     @media (max-width: 1120px) {
@@ -745,7 +745,7 @@
       /* 모바일: 말뚝 윗면 y = 342px */
       .height-ruler {
         left: 12px;
-        top: 222px; /* 222 + 120 = 342 */
+        top: 222px;
         width: 76px;
         height: 120px;
         border-left-width: 3px;
@@ -811,7 +811,7 @@
       .main-btn, .sub-btn, .danger-btn { padding: 12px 10px; }
       table { min-width: 520px; }
       th, td { font-size: 12px; padding: 8px 6px; }
-      canvas { height: 210px; }
+      canvas { height: 300px; }
     }
   </style>
 </head>
@@ -945,11 +945,11 @@
         <div class="graph-grid">
           <div class="graph-wrap">
             <p class="graph-title">실험 1 그래프: 추의 질량과 말뚝 이동 거리</p>
-            <canvas id="graph1Canvas" width="680" height="260"></canvas>
+            <canvas id="graph1Canvas" width="680" height="340"></canvas>
           </div>
           <div class="graph-wrap">
             <p class="graph-title">실험 2 그래프: 추를 떨어뜨리는 높이와 말뚝 이동 거리</p>
-            <canvas id="graph2Canvas" width="680" height="260"></canvas>
+            <canvas id="graph2Canvas" width="680" height="340"></canvas>
           </div>
         </div>
       </div>
@@ -969,7 +969,7 @@
     const PILE_RULER_PX = () => IS_MOBILE() ? 90 : 170;
     const PILE_MOVE_PX = () => PILE_RULER_PX();
 
-    /* 핵심: 높이 0 cm 기준 = 말뚝 윗면 */
+    /* 높이 0 cm 기준 = 말뚝 윗면 */
     const PILE_HEAD_Y = () => IS_MOBILE() ? 342 : 325;
     const DROP_BOTTOM_TOP = () => PILE_HEAD_Y() - WEIGHT_HEIGHT();
 
@@ -1291,7 +1291,7 @@
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
       const cssW = rect.width || 680;
-      const cssH = 230;
+      const cssH = 340;
 
       canvas.width = Math.round(cssW * dpr);
       canvas.height = Math.round(cssH * dpr);
