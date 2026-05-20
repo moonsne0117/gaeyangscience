@@ -126,7 +126,6 @@
       display: none !important;
     }
 
-    /* 지면선: 높이 눈금자 0 cm와 말뚝 이동 거리 0 cm의 공통 기준 */
     .ground-line {
       position: absolute;
       left: 0;
@@ -163,7 +162,7 @@
 
     .stand-label {
       position: absolute;
-      left: 185px;
+      left: 180px;
       top: 22px;
       z-index: 10;
       padding: 6px 10px;
@@ -175,6 +174,7 @@
       font-weight: 800;
     }
 
+    /* 공사장 항타기 모형 */
     .crane-frame {
       position: absolute;
       left: 170px;
@@ -214,10 +214,10 @@
 
     .weight {
       position: absolute;
-      left: 228px;
-      top: 334px;
-      width: 62px;
-      height: 62px;
+      left: 231px;
+      top: 235px;
+      width: 56px;
+      height: 56px;
       border-radius: 16px 16px 22px 22px;
       background: linear-gradient(180deg, #ffcf88, #f19b42);
       border: 4px solid #ce7828;
@@ -227,7 +227,7 @@
       align-items: center;
       color: #65350e;
       font-weight: 900;
-      font-size: 12px;
+      font-size: 11px;
       z-index: 24;
       transition: top .25s ease, transform .18s ease;
     }
@@ -235,9 +235,9 @@
     .weight::before {
       content: "";
       position: absolute;
-      top: -14px;
-      width: 23px;
-      height: 14px;
+      top: -12px;
+      width: 21px;
+      height: 12px;
       border: 4px solid #ce7828;
       border-bottom: none;
       border-radius: 12px 12px 0 0;
@@ -248,11 +248,11 @@
       transform: scale(1.08, .88);
     }
 
-    /* 실험 2에서만 표시: 높이 눈금자 0 cm = 지면선 */
+    /* 실험 2 높이 눈금자: 0 cm = 말뚝 윗면 */
     .height-ruler {
       position: absolute;
       left: 28px;
-      top: 260px;
+      top: 155px;   /* 155 + 170 = 325 (말뚝 윗면 위치) */
       width: 100px;
       height: 170px;
       border-left: 4px solid var(--primary-dark);
@@ -289,9 +289,9 @@
 
     .height-title {
       position: absolute;
-      left: 24px;
-      top: 444px;
-      width: 116px;
+      left: 22px;
+      top: 338px;
+      width: 112px;
       text-align: center;
       font-size: 13px;
       font-weight: 900;
@@ -303,13 +303,21 @@
       z-index: 46;
     }
 
-    /* 말뚝: 지면에서 시작하여 아래로 박힘 */
+    .height-guide {
+      position: absolute;
+      left: 124px;
+      width: 124px;
+      border-top: 2px dashed #78b86b;
+      z-index: 20;
+      opacity: 0.95;
+    }
+
     .pile-wrap {
       position: absolute;
-      left: 230px;
-      top: 430px;
-      width: 58px;
-      height: 125px;
+      left: 234px;
+      top: 340px;   /* 340 + (-15) = 325 부근에서 말뚝 윗면 */
+      width: 50px;
+      height: 90px;
       z-index: 36;
       transform: translateY(0px);
       transition: transform .82s cubic-bezier(.13,.86,.18,1.05);
@@ -317,10 +325,10 @@
 
     .pile {
       position: absolute;
-      left: 10px;
+      left: 8px;
       top: 0;
-      width: 38px;
-      height: 125px;
+      width: 34px;
+      height: 90px;
       background: linear-gradient(90deg, #805030, #c58c56 50%, #704323);
       border: 3px solid #6e4127;
       border-radius: 10px 10px 7px 7px;
@@ -329,10 +337,10 @@
 
     .pile-top {
       position: absolute;
-      left: 2px;
-      top: -16px;
-      width: 54px;
-      height: 22px;
+      left: 0;
+      top: -15px;
+      width: 50px;
+      height: 20px;
       border-radius: 8px;
       background: linear-gradient(180deg, #a8c0ce, #7894a3);
       border: 3px solid #5f7b8a;
@@ -350,7 +358,7 @@
       100% { filter: brightness(1); }
     }
 
-    /* 말뚝 이동 거리 눈금자: 0 cm = 지면선, 높이 눈금자와 10 cm 간격 동일 */
+    /* 말뚝 이동 거리: 0 cm = 지면 */
     .pile-ruler {
       position: absolute;
       left: 305px;
@@ -435,8 +443,8 @@
 
     .impact-burst {
       position: absolute;
-      left: 202px;
-      top: 382px;
+      left: 200px;
+      top: 294px;
       width: 140px;
       height: 90px;
       pointer-events: none;
@@ -477,8 +485,7 @@
       gap: 18px;
     }
 
-    .controls,
-    .result-body {
+    .controls, .result-body {
       padding: 16px;
     }
 
@@ -489,8 +496,7 @@
       margin-bottom: 14px;
     }
 
-    button,
-    .tab-btn {
+    button, .tab-btn {
       appearance: none;
       border: none;
       cursor: pointer;
@@ -561,9 +567,7 @@
       gap: 10px;
     }
 
-    .main-btn,
-    .sub-btn,
-    .danger-btn {
+    .main-btn, .sub-btn, .danger-btn {
       padding: 13px 12px;
       border-radius: 15px;
     }
@@ -638,8 +642,7 @@
       background: #fff;
     }
 
-    th,
-    td {
+    th, td {
       padding: 10px 8px;
       text-align: center;
       border-bottom: 1px solid #edf3f7;
@@ -700,40 +703,75 @@
       .card-header { padding: 12px 14px; }
       .card-header h2 { font-size: 16px; }
       .badge { font-size: 12px; padding: 6px 9px; }
+
       .experiment-area {
-        height: 565px;
+        height: 575px;
         padding: 8px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
       }
+
       .scene {
         width: 430px;
         min-width: 430px;
-        height: 540px;
+        height: 550px;
         margin: 0 auto;
       }
+
       .ground-line { top: 435px; }
       .sand { top: 435px; }
-      .height-ruler {
-        left: 12px;
-        top: 345px;
-        width: 76px;
-        height: 90px;
-        border-left-width: 3px;
-      }
-      .height-ruler .tick { width: 18px; }
-      .height-ruler .tick.major { width: 28px; height: 2px; }
-      .height-ruler .label { left: 34px; font-size: 9px; }
-      .height-title { left: 8px; top: 448px; width: 84px; font-size: 10px; padding: 5px 6px; }
+
       .stand-label { left: 145px; top: 18px; font-size: 11px; padding: 5px 8px; }
       .crane-frame { left: 134px; top: 50px; width: 128px; height: 385px; border-left-width: 10px; border-right-width: 10px; border-top-width: 12px; }
       .crossbar { left: 140px; top: 104px; width: 122px; height: 7px; }
       .drop-line { left: 193px; top: 66px; height: 360px; }
-      .weight { left: 164px; width: 58px; height: 58px; font-size: 10px; border-width: 3px; }
-      .weight::before { top: -14px; width: 22px; height: 14px; border-width: 4px; border-bottom: none; }
-      .pile-wrap { left: 170px; top: 435px; width: 46px; height: 120px; }
-      .pile { left: 8px; width: 30px; height: 120px; border-width: 2px; }
-      .pile-top { left: 3px; width: 46px; height: 18px; top: -13px; border-width: 2px; }
+
+      .weight {
+        left: 168px;
+        width: 50px;
+        height: 50px;
+        font-size: 9px;
+        border-width: 3px;
+      }
+
+      .weight::before {
+        top: -11px;
+        width: 19px;
+        height: 11px;
+        border-width: 3px;
+        border-bottom: none;
+      }
+
+      /* 모바일: 말뚝 윗면 y = 342px */
+      .height-ruler {
+        left: 12px;
+        top: 222px; /* 222 + 120 = 342 */
+        width: 76px;
+        height: 120px;
+        border-left-width: 3px;
+      }
+
+      .height-ruler .tick { width: 18px; }
+      .height-ruler .tick.major { width: 28px; height: 2px; }
+      .height-ruler .label { left: 34px; font-size: 9px; }
+
+      .height-title {
+        left: 8px;
+        top: 355px;
+        width: 84px;
+        font-size: 10px;
+        padding: 5px 6px;
+      }
+
+      .height-guide {
+        left: 86px;
+        width: 96px;
+      }
+
+      .pile-wrap { left: 171px; top: 355px; width: 44px; height: 80px; }
+      .pile { left: 8px; width: 28px; height: 80px; border-width: 2px; }
+      .pile-top { left: 1px; width: 42px; height: 17px; top: -13px; border-width: 2px; }
+
       .pile-ruler {
         left: 232px;
         top: 435px;
@@ -741,13 +779,30 @@
         height: 90px;
         border-left-width: 3px;
       }
+
       .pile-ruler .tick { width: 16px; }
       .pile-ruler .tick.major { width: 26px; height: 2px; }
       .pile-ruler .label { left: 30px; font-size: 9px; }
-      .pile-title { left: 222px; top: 530px; width: 94px; font-size: 10px; padding: 5px 6px; }
-      .depth-marker { left: 222px; top: 435px; width: 92px; border-top-width: 2px; }
+
+      .pile-title {
+        left: 222px;
+        top: 530px;
+        width: 94px;
+        font-size: 10px;
+        padding: 5px 6px;
+      }
+
+      .depth-marker {
+        left: 222px;
+        top: 435px;
+        width: 92px;
+        border-top-width: 2px;
+      }
+
       .depth-marker::after { font-size: 10px; top: -20px; }
-      .impact-burst { left: 140px; top: 388px; transform: scale(.75); }
+
+      .impact-burst { left: 138px; top: 312px; transform: scale(.72); }
+
       .controls, .result-body { padding: 12px; }
       .tabs { grid-template-columns: 1fr; gap: 8px; }
       .tab-btn { padding: 11px 8px; font-size: 14px; }
@@ -774,18 +829,20 @@
     <section class="card">
       <div class="card-header">
         <h2>① 가상실험 장치</h2>
-        <span class="badge">눈금 기준: 지면선</span>
+        <span class="badge">공사장 항타기 모형</span>
       </div>
       <div class="experiment-area">
         <div class="scene">
-          <div class="stand-label">수직 스탠드</div>
+          <div class="stand-label">항타기 모형</div>
 
           <div class="height-ruler" id="heightRuler"></div>
           <div class="height-title" id="heightTitle">높이 눈금자</div>
+          <div class="height-guide" id="heightGuide"></div>
 
           <div class="crane-frame"></div>
           <div class="crossbar"></div>
           <div class="drop-line"></div>
+
           <div class="weight" id="weight">0.1 kg</div>
 
           <div class="pile-wrap" id="pileWrap">
@@ -840,7 +897,9 @@
             <button class="danger-btn" id="resetBtn" type="button">초기화</button>
           </div>
 
-          <p class="small-note">같은 조건에서 3회까지 반복할 수 있습니다. 실험 후 말뚝 위치가 유지되어 눈금으로 결과를 확인할 수 있습니다.</p>
+          <p class="small-note">
+            실험 2에서는 높이 눈금자의 0 cm가 말뚝 윗면에 맞춰집니다.
+          </p>
         </div>
       </section>
 
@@ -860,7 +919,13 @@
             <table>
               <thead>
                 <tr>
-                  <th>실험</th><th>질량(kg)</th><th>높이(cm)</th><th>1회(cm)</th><th>2회(cm)</th><th>3회(cm)</th><th>평균(cm)</th>
+                  <th>실험</th>
+                  <th>질량(kg)</th>
+                  <th>높이(cm)</th>
+                  <th>1회(cm)</th>
+                  <th>2회(cm)</th>
+                  <th>3회(cm)</th>
+                  <th>평균(cm)</th>
                 </tr>
               </thead>
               <tbody id="resultTableBody">
@@ -880,11 +945,11 @@
         <div class="graph-grid">
           <div class="graph-wrap">
             <p class="graph-title">실험 1 그래프: 추의 질량과 말뚝 이동 거리</p>
-            <canvas id="graph1Canvas" width="680" height="260" aria-label="실험 1 그래프"></canvas>
+            <canvas id="graph1Canvas" width="680" height="260"></canvas>
           </div>
           <div class="graph-wrap">
             <p class="graph-title">실험 2 그래프: 추를 떨어뜨리는 높이와 말뚝 이동 거리</p>
-            <canvas id="graph2Canvas" width="680" height="260" aria-label="실험 2 그래프"></canvas>
+            <canvas id="graph2Canvas" width="680" height="260"></canvas>
           </div>
         </div>
       </div>
@@ -897,12 +962,16 @@
     const PILE_RULER_MAX = 100;
 
     const IS_MOBILE = () => window.matchMedia('(max-width: 680px)').matches;
+
     const GROUND_Y = () => IS_MOBILE() ? 435 : 430;
-    const WEIGHT_HEIGHT = () => IS_MOBILE() ? 58 : 62;
-    const HEIGHT_RULER_PX = () => IS_MOBILE() ? 90 : 170;
+    const WEIGHT_HEIGHT = () => IS_MOBILE() ? 50 : 56;
+    const HEIGHT_RULER_PX = () => IS_MOBILE() ? 120 : 170;
     const PILE_RULER_PX = () => IS_MOBILE() ? 90 : 170;
     const PILE_MOVE_PX = () => PILE_RULER_PX();
-    const DROP_BOTTOM_TOP = () => GROUND_Y() - WEIGHT_HEIGHT();
+
+    /* 핵심: 높이 0 cm 기준 = 말뚝 윗면 */
+    const PILE_HEAD_Y = () => IS_MOBILE() ? 342 : 325;
+    const DROP_BOTTOM_TOP = () => PILE_HEAD_Y() - WEIGHT_HEIGHT();
 
     const state = {
       mode: 1,
@@ -921,18 +990,25 @@
     const startBtn = document.getElementById('startBtn');
     const resetBtn = document.getElementById('resetBtn');
     const printBtn = document.getElementById('printBtn');
+
     const runBadge = document.getElementById('runBadge');
     const resultTableBody = document.getElementById('resultTableBody');
+
     const weight = document.getElementById('weight');
     const pileWrap = document.getElementById('pileWrap');
     const impactBurst = document.getElementById('impactBurst');
+
     const heightRuler = document.getElementById('heightRuler');
     const heightTitle = document.getElementById('heightTitle');
+    const heightGuide = document.getElementById('heightGuide');
+
     const pileRuler = document.getElementById('pileRuler');
     const depthMarker = document.getElementById('depthMarker');
+
     const statMass = document.getElementById('statMass');
     const statHeight = document.getElementById('statHeight');
     const statAverage = document.getElementById('statAverage');
+
     const graph1Canvas = document.getElementById('graph1Canvas');
     const graph2Canvas = document.getElementById('graph2Canvas');
 
@@ -941,9 +1017,11 @@
         const mass = (i / 10).toFixed(1);
         massSelect.insertAdjacentHTML('beforeend', `<option value="${mass}">${mass} kg</option>`);
       }
+
       for (let h = 10; h <= 100; h += 10) {
         heightSelect.insertAdjacentHTML('beforeend', `<option value="${h}">${h} cm</option>`);
       }
+
       massSelect.value = '0.1';
       heightSelect.value = '20';
     }
@@ -954,7 +1032,8 @@
         const y = HEIGHT_RULER_PX() - (h / 100) * HEIGHT_RULER_PX();
         heightRuler.insertAdjacentHTML(
           'beforeend',
-          `<div class="tick major" style="top:${y}px"></div><div class="label" style="top:${y}px">${h} cm</div>`
+          `<div class="tick major" style="top:${y}px"></div>
+           <div class="label" style="top:${y}px">${h} cm</div>`
         );
       }
 
@@ -964,7 +1043,8 @@
         const cls = d % 20 === 0 ? 'tick major' : 'tick';
         pileRuler.insertAdjacentHTML(
           'beforeend',
-          `<div class="${cls}" style="top:${y}px"></div><div class="label" style="top:${y}px">${d} cm</div>`
+          `<div class="${cls}" style="top:${y}px"></div>
+           <div class="label" style="top:${y}px">${d} cm</div>`
         );
       }
     }
@@ -988,7 +1068,9 @@
     function generateMeasurement() {
       const ideal = expectedDistance(state.mass, state.height);
       const runIndex = state.currentRuns.length;
+
       if (runIndex < 2) return round1(ideal + randomBetween(-0.6, 0.6));
+
       const third = ideal * 3 - state.currentRuns[0] - state.currentRuns[1];
       return round1(third);
     }
@@ -1004,24 +1086,35 @@
       if (mode === 1) {
         heightRuler.classList.add('hidden');
         heightTitle.classList.add('hidden');
+        heightGuide.classList.add('hidden');
+
         state.height = 20;
         heightSelect.value = '20';
         heightSelect.disabled = true;
         massSelect.disabled = false;
-        modeInfo.innerHTML = '<strong>실험 1</strong>은 높이를 20 cm로 일정하게 하고, 추의 질량을 바꾸어 말뚝의 이동 거리를 비교합니다.';
+
+        modeInfo.innerHTML =
+          '<strong>실험 1</strong>은 높이를 20 cm로 일정하게 하고, 추의 질량을 바꾸어 말뚝의 이동 거리를 비교합니다.';
       } else {
         heightRuler.classList.remove('hidden');
         heightTitle.classList.remove('hidden');
+        heightGuide.classList.remove('hidden');
+
         state.mass = 0.1;
         massSelect.value = '0.1';
         heightSelect.disabled = false;
         massSelect.disabled = true;
-        modeInfo.innerHTML = '<strong>실험 2</strong>는 질량을 0.1 kg으로 일정하게 하고, 추를 떨어뜨리는 높이를 바꾸어 말뚝의 이동 거리를 비교합니다.';
+
+        modeInfo.innerHTML =
+          '<strong>실험 2</strong>는 질량을 0.1 kg으로 일정하게 하고, 추를 떨어뜨리는 높이를 바꾸어 말뚝의 이동 거리를 비교합니다.';
       }
 
       updateSelectedValues();
       loadRunsForCurrentCondition();
-      state.currentDistance = state.currentRuns.length ? state.currentRuns[state.currentRuns.length - 1] : 0;
+      state.currentDistance = state.currentRuns.length
+        ? state.currentRuns[state.currentRuns.length - 1]
+        : 0;
+
       updateRunBadge();
       updateApparatus(state.currentDistance, state.currentDistance === 0);
       drawAllGraphs();
@@ -1030,17 +1123,30 @@
     function updateSelectedValues() {
       state.mass = Number(massSelect.value);
       state.height = Number(heightSelect.value);
+
       weight.textContent = `${state.mass.toFixed(1)} kg`;
       statMass.textContent = `${state.mass.toFixed(1)} kg`;
       statHeight.textContent = `${state.height} cm`;
-      statAverage.textContent = state.currentRuns.length ? `${average(state.currentRuns).toFixed(1)} cm` : '-';
+      statAverage.textContent = state.currentRuns.length
+        ? `${average(state.currentRuns).toFixed(1)} cm`
+        : '-';
+
       updateWeightStartPosition();
+      updateHeightGuide();
     }
 
+    /* 높이 10cm = 말뚝 윗면에서 10cm 위 */
     function updateWeightStartPosition() {
       const heightPx = (state.height / 100) * HEIGHT_RULER_PX();
-      const top = GROUND_Y() - WEIGHT_HEIGHT() - heightPx;
+      const top = DROP_BOTTOM_TOP() - heightPx;
       weight.style.top = `${top}px`;
+    }
+
+    function updateHeightGuide() {
+      if (state.mode !== 2) return;
+      const heightPx = (state.height / 100) * HEIGHT_RULER_PX();
+      const guideY = PILE_HEAD_Y() - heightPx;
+      heightGuide.style.top = `${guideY}px`;
     }
 
     function updateRunBadge() {
@@ -1051,18 +1157,25 @@
 
     async function runExperiment() {
       if (state.currentRuns.length >= MAX_RUNS) return;
+
       startBtn.disabled = true;
       startBtn.textContent = '낙하 중...';
+
       updateSelectedValues();
       const distance = generateMeasurement();
+
       await animateDrop(distance);
+
       state.currentDistance = distance;
       state.currentRuns.push(distance);
+
       saveOrUpdateResult();
       updateTable();
       updateRunBadge();
       drawAllGraphs();
+
       statAverage.textContent = `${average(state.currentRuns).toFixed(1)} cm`;
+
       if (state.currentRuns.length < MAX_RUNS) {
         startBtn.disabled = false;
         startBtn.textContent = '실험 시작';
@@ -1073,6 +1186,7 @@
       return new Promise(resolve => {
         updateWeightStartPosition();
         updateApparatus(0, true);
+
         weight.classList.remove('hit');
         impactBurst.classList.remove('show');
         pileWrap.classList.remove('driving');
@@ -1104,6 +1218,7 @@
     function updateApparatus(distance, hideMarker = false) {
       const d = Math.max(0, distance);
       const pileMovePx = (d / PILE_RULER_MAX) * PILE_MOVE_PX();
+
       pileWrap.style.transform = `translateY(${pileMovePx}px)`;
       depthMarker.style.top = `${GROUND_Y() + pileMovePx}px`;
       depthMarker.dataset.depth = `${d.toFixed(1)} cm`;
@@ -1111,13 +1226,31 @@
     }
 
     function saveOrUpdateResult() {
-      const existing = state.results.find(r => r.mode === state.mode && r.mass.toFixed(1) === state.mass.toFixed(1) && r.height === state.height);
-      if (existing) existing.runs = [...state.currentRuns, state.currentDistance];
-      else state.results.push({ mode: state.mode, mass: state.mass, height: state.height, runs: [...state.currentRuns, state.currentDistance] });
+      const existing = state.results.find(
+        r => r.mode === state.mode &&
+             r.mass.toFixed(1) === state.mass.toFixed(1) &&
+             r.height === state.height
+      );
+
+      if (existing) {
+        existing.runs = [...state.currentRuns];
+      } else {
+        state.results.push({
+          mode: state.mode,
+          mass: state.mass,
+          height: state.height,
+          runs: [...state.currentRuns]
+        });
+      }
     }
 
     function loadRunsForCurrentCondition() {
-      const found = state.results.find(r => r.mode === state.mode && r.mass.toFixed(1) === state.mass.toFixed(1) && r.height === state.height);
+      const found = state.results.find(
+        r => r.mode === state.mode &&
+             r.mass.toFixed(1) === state.mass.toFixed(1) &&
+             r.height === state.height
+      );
+
       state.currentRuns = found ? [...found.runs] : [];
     }
 
@@ -1126,16 +1259,25 @@
         resultTableBody.innerHTML = '<tr><td colspan="7">아직 실험 결과가 없습니다.</td></tr>';
         return;
       }
-      const sorted = [...state.results].sort((a, b) => a.mode !== b.mode ? a.mode - b.mode : (a.mode === 1 ? a.mass - b.mass : a.height - b.height));
+
+      const sorted = [...state.results].sort((a, b) => {
+        if (a.mode !== b.mode) return a.mode - b.mode;
+        return a.mode === 1 ? a.mass - b.mass : a.height - b.height;
+      });
+
       resultTableBody.innerHTML = sorted.map(r => {
         const avg = average(r.runs);
-        return `<tr>
-          <td>실험 ${r.mode}</td><td>${r.mass.toFixed(1)}</td><td>${r.height}</td>
-          <td>${r.runs[0] !== undefined ? r.runs[0].toFixed(1) : '-'}</td>
-          <td>${r.runs[1] !== undefined ? r.runs[1].toFixed(1) : '-'}</td>
-          <td>${r.runs[2] !== undefined ? r.runs[2].toFixed(1) : '-'}</td>
-          <td><strong>${r.runs.length ? avg.toFixed(1) : '-'}</strong></td>
-        </tr>`;
+        return `
+          <tr>
+            <td>실험 ${r.mode}</td>
+            <td>${r.mass.toFixed(1)}</td>
+            <td>${r.height}</td>
+            <td>${r.runs[0] !== undefined ? r.runs[0].toFixed(1) : '-'}</td>
+            <td>${r.runs[1] !== undefined ? r.runs[1].toFixed(1) : '-'}</td>
+            <td>${r.runs[2] !== undefined ? r.runs[2].toFixed(1) : '-'}</td>
+            <td><strong>${r.runs.length ? avg.toFixed(1) : '-'}</strong></td>
+          </tr>
+        `;
       }).join('');
     }
 
@@ -1150,6 +1292,7 @@
       const rect = canvas.getBoundingClientRect();
       const cssW = rect.width || 680;
       const cssH = 230;
+
       canvas.width = Math.round(cssW * dpr);
       canvas.height = Math.round(cssH * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -1158,6 +1301,7 @@
       const pad = { left: 58, right: 22, top: 22, bottom: 46 };
       const plotW = cssW - pad.left - pad.right;
       const plotH = cssH - pad.top - pad.bottom;
+
       const data = state.results
         .filter(r => r.mode === mode && r.runs.length > 0)
         .map(r => ({ x: mode === 1 ? r.mass : r.height, y: average(r.runs) }))
@@ -1167,11 +1311,13 @@
       const xMax = mode === 1 ? 1.0 : 100;
       const yMin = 0;
       const yMax = 110;
+
       const xs = x => pad.left + ((x - xMin) / (xMax - xMin)) * plotW;
       const ys = y => pad.top + plotH - ((y - yMin) / (yMax - yMin)) * plotH;
 
       ctx.fillStyle = '#fff';
       ctx.fillRect(0, 0, cssW, cssH);
+
       ctx.strokeStyle = '#e6eff5';
       ctx.lineWidth = 1;
       ctx.fillStyle = '#6b7c8f';
@@ -1188,9 +1334,13 @@
         ctx.fillText(String(y), pad.left - 8, py);
       }
 
-      const xTicks = mode === 1 ? [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0] : [10,20,30,40,50,60,70,80,90,100];
+      const xTicks = mode === 1
+        ? [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]
+        : [10,20,30,40,50,60,70,80,90,100];
+
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
+
       xTicks.forEach(x => {
         const px = xs(x);
         ctx.strokeStyle = '#eef5f8';
@@ -1198,6 +1348,7 @@
         ctx.moveTo(px, pad.top);
         ctx.lineTo(px, pad.top + plotH);
         ctx.stroke();
+
         if (mode === 1 || x % 20 === 0) {
           ctx.fillStyle = '#6b7c8f';
           ctx.fillText(mode === 1 ? x.toFixed(1) : String(x), px, pad.top + plotH + 9);
@@ -1216,6 +1367,7 @@
       ctx.font = 'bold 12px Apple SD Gothic Neo, Malgun Gothic, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText(mode === 1 ? '추의 질량(kg)' : '추를 떨어뜨리는 높이(cm)', pad.left + plotW / 2, cssH - 18);
+
       ctx.save();
       ctx.translate(17, pad.top + plotH / 2);
       ctx.rotate(-Math.PI / 2);
@@ -1234,24 +1386,29 @@
       ctx.strokeStyle = mode === 1 ? '#5aa7d8' : '#f0a64b';
       ctx.lineWidth = 3;
       ctx.beginPath();
+
       data.forEach((p, i) => {
         const px = xs(p.x);
         const py = ys(p.y);
         if (i === 0) ctx.moveTo(px, py);
         else ctx.lineTo(px, py);
       });
+
       ctx.stroke();
 
       data.forEach(p => {
         const px = xs(p.x);
         const py = ys(p.y);
+
         ctx.fillStyle = mode === 1 ? '#5aa7d8' : '#f0a64b';
         ctx.beginPath();
         ctx.arc(px, py, 6, 0, Math.PI * 2);
         ctx.fill();
+
         ctx.strokeStyle = '#fff';
         ctx.lineWidth = 2;
         ctx.stroke();
+
         ctx.fillStyle = '#243447';
         ctx.font = 'bold 12px Apple SD Gothic Neo, Malgun Gothic, sans-serif';
         ctx.textAlign = 'center';
@@ -1277,19 +1434,27 @@
     massSelect.addEventListener('change', () => {
       updateSelectedValues();
       loadRunsForCurrentCondition();
-      state.currentDistance = state.currentRuns.length ? state.currentRuns[state.currentRuns.length - 1] : 0;
+      state.currentDistance = state.currentRuns.length
+        ? state.currentRuns[state.currentRuns.length - 1]
+        : 0;
       updateRunBadge();
       updateApparatus(state.currentDistance, state.currentDistance === 0);
-      statAverage.textContent = state.currentRuns.length ? `${average(state.currentRuns).toFixed(1)} cm` : '-';
+      statAverage.textContent = state.currentRuns.length
+        ? `${average(state.currentRuns).toFixed(1)} cm`
+        : '-';
     });
 
     heightSelect.addEventListener('change', () => {
       updateSelectedValues();
       loadRunsForCurrentCondition();
-      state.currentDistance = state.currentRuns.length ? state.currentRuns[state.currentRuns.length - 1] : 0;
+      state.currentDistance = state.currentRuns.length
+        ? state.currentRuns[state.currentRuns.length - 1]
+        : 0;
       updateRunBadge();
       updateApparatus(state.currentDistance, state.currentDistance === 0);
-      statAverage.textContent = state.currentRuns.length ? `${average(state.currentRuns).toFixed(1)} cm` : '-';
+      statAverage.textContent = state.currentRuns.length
+        ? `${average(state.currentRuns).toFixed(1)} cm`
+        : '-';
     });
 
     startBtn.addEventListener('click', runExperiment);
